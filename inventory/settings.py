@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Vendors.apps.VendorsConfig',
+    'corsheaders',
+    'rest_framework',
+    'Vendors',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'inventory.urls'
@@ -67,6 +70,17 @@ TEMPLATES = [
         },
     },
 ]
+
+
+CORS_ORIGIN_WHITELIST =[
+    'http://localhost:3000'
+]
+
+REST_FRAMEWORK = {'DEFAULT_PERMISSIONS_CLASSES': [
+    'rest_framework.permissions.AllowAny']
+                  }
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'inventory.wsgi.application'
 
